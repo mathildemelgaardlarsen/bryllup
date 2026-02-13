@@ -130,13 +130,12 @@ img {
 
 .hero picture {
   position: relative;
-  display: grid;
-  place-items: center;
+  display: block;
   width: 100%;
-  height: clamp(390px, 48vw, 760px);
+  height: clamp(500px, 58vw, 890px);
   margin: 0;
   overflow: hidden;
-  background: linear-gradient(180deg, #aeb6c1 0%, #d8cfc1 56%, #cdb8a4 100%);
+  background: #e9dac9;
 }
 
 .hero__image {
@@ -144,7 +143,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 60%;
+  object-position: 50% 78%;
 }
 
 .hero__overlay {
@@ -170,8 +169,9 @@ img {
   margin: 0 auto;
   padding: 2.4rem 1.2rem 1.5rem;
   display: grid;
-  align-content: start;
-  text-align: left;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
   color: #fffef9;
   text-shadow: 0 6px 18px rgba(17, 13, 10, 0.35);
 }
@@ -208,7 +208,7 @@ h2 {
 
 .hero__sub {
   max-width: 40ch;
-  margin: 0.65rem 0 0;
+  margin: 0.65rem auto 0;
   color: rgba(255, 246, 238, 0.95);
   font-size: clamp(1rem, 2.2vw, 1.3rem);
 }
@@ -520,7 +520,7 @@ h2 {
 
 @media (max-width: 760px) {
   .hero picture {
-    height: clamp(280px, 68vw, 420px);
+    height: clamp(380px, 84vw, 540px);
   }
 
   .slide img {
@@ -745,7 +745,7 @@ h2 {
     width: 100%;
     margin: 0;
     padding: 1rem 1rem 1.2rem;
-    align-content: start;
+    align-content: center;
   }
 
   .location__media-circle {
