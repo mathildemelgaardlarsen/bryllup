@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bryllup | 11.-14. september 2026</title>
+    <meta
+      name="description"
+      content="Velkommen til vores bryllupshjemmeside. Her finder du nedtælling, praktisk info, tidsplan, lokation og billeder fra stedet."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="topnav" aria-label="Sektioner" data-da-aria-label="Sektioner" data-en-aria-label="Sections">
+      <div class="topnav__inner">
+        <select class="topnav__select" data-section-select aria-label="Vælg sektion" data-da-aria-label="Vælg sektion" data-en-aria-label="Choose section">
+          <option value="#velkommen" data-da="Velkommen" data-en="Welcome">Velkommen</option>
+          <option value="#countdown" data-da="Nedtælling" data-en="Countdown">nedtælling</option>
+          <option value="#invitation" data-da="Invitation" data-en="Invitation">Invitation</option>
+          <option value="#tidsplan" data-da="Tidsplan" data-en="Schedule">Tidsplan</option>
+          <option value="#sektion" data-da="Sektion" data-en="Info">Sektion</option>
+          <option value="#lokation" data-da="Lokation" data-en="Location">Lokation</option>
+          <option value="#billedgalleri" data-da="Billedgalleri" data-en="Gallery">Billedgalleri</option>
+        </select>
+        <a href="#velkommen" data-da="Velkommen" data-en="Welcome">Velkommen</a>
+        <a href="#countdown" data-da="Nedtælling" data-en="Countdown">Nedtælling</a>
+        <a href="#invitation" data-da="Invitation" data-en="Invitation">Invitation</a>
+        <a href="#tidsplan" data-da="Tidsplan" data-en="Schedule">Tidsplan</a>
+        <a href="#sektion" data-da="Sektion" data-en="Info">Sektion</a>
+        <a href="#lokation" data-da="Lokation" data-en="Location">Lokation</a>
+        <a href="#billedgalleri" data-da="Billedgalleri" data-en="Gallery">Billedgalleri</a>
+        <button class="lang-toggle" type="button" data-language-toggle aria-label="Skift sprog" data-da-label="English" data-en-label="Dansk">English</button>
+      </div>
+    </nav>
+
+    <header class="hero" id="velkommen">
+      <picture>
+        <source srcset="front_page_pic.png" type="image/png" />
+        <img
+          src="front_page_pic.jpg"
+          alt="Bryllupslokation"
+          class="hero__image"
+        />
+      </picture>
+      <div class="hero__overlay"></div>
+      <div class="hero__content reveal">
+        <p class="eyebrow">11.-14. september 2026</p>
+        <h1 data-da="Bryllupsfejring" data-en="Wedding Celebration">Bryllupsfejring</h1>
+        <p class="hero__sub" data-da="Agriturismo Mezzano i Chianti" data-en="Agriturismo Mezzano in Chianti">Agriturismo Mezzano i Chianti</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="countdown section reveal" id="countdown" aria-labelledby="countdown-title">
+        <div class="section__head">
+          <p class="eyebrow" data-da="Nedtælling" data-en="Countdown">Nedtælling</p>
+        </div>
+        <div class="countdown__grid" role="timer" aria-live="polite">
+          <article class="countdown__card">
+            <span class="countdown__value" data-unit="days">0</span>
+            <span class="countdown__label" data-da="Dage" data-en="Days">Dage</span>
+          </article>
+          <article class="countdown__card">
+            <span class="countdown__value" data-unit="hours">0</span>
+            <span class="countdown__label" data-da="Timer" data-en="Hours">Timer</span>
+          </article>
+          <article class="countdown__card">
+            <span class="countdown__value" data-unit="minutes">0</span>
+            <span class="countdown__label" data-da="Minutter" data-en="Minutes">Minutter</span>
+          </article>
+          <article class="countdown__card">
+            <span class="countdown__value" data-unit="seconds">0</span>
+            <span class="countdown__label" data-da="Sekunder" data-en="Seconds">Sekunder</span>
+          </article>
+        </div>
+        <p class="countdown__hint">
+          <span data-da="Weekenden starter den" data-en="The weekend starts on">Weekenden starter den</span>
+          <strong>11. september 2026</strong>
+          <span data-da="og slutter den" data-en="and ends on">og slutter den</span>
+          <strong>14. september 2026.</strong>
+        </p>
+      </section>
+
+      <section class="invitation section reveal" id="invitation" aria-labelledby="invite-title">
+        <div class="invitation__layout">
+          <div class="invitation__text">
+            <div class="section__head">
+              <p class="eyebrow" data-da="Invitation" data-en="Invitation">Invitation</p>
+              <h2 id="invite-title" data-da="Kære familie og venner, vi glæder os til at se jer" data-en="Dear family and friends, we look forward to seeing you">Kære familie og venner, vi glæder os til at se jer</h2>
+            </div>
+            <p data-da="Under Toscanas sol fejrer vi kærligheden med italienske oplevelser, mad og drikke." data-en="MANGLER OVERSÆTTELSE">
+              Under Toscanas sol fejrer vi kærligheden med italienske oplevelser, mad og drikke.
+            </p>
+          </div>
+          <figure class="invitation__photo">
+            <img src="Pics/uandme.webp" alt="Portræt af jer" loading="lazy" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="timeline section reveal" id="tidsplan" aria-labelledby="timeline-title">
+        <div class="section__head">
+          <p class="eyebrow" data-da="Foreløbig tidsplan" data-en="Preliminary schedule">Foreløbig tidsplan</p>
+          <h2 id="timeline-title" data-da="Programmet opdateres løbende" data-en="The program is updated continuously">Programmet opdateres løbende</h2>
+        </div>
+        <div class="timeline__flow">
+          <article class="timeline__group">
+            <p class="timeline__date" data-da="Fredag d. 11. sep. 2026" data-en="Friday, Sep 11, 2026">Fredag d. 11. sep. 2026</p>
+            <div class="timeline__item">
+              <p class="timeline__heading"><span class="timeline__clock">12:00</span><span data-da="Ankomst" data-en="Arrival">Ankomst</span></p>
+              <p class="timeline__description" data-da="Ankomst til stedet fra kl. 12." data-en="Arrival at the venue from 12:00.">Ankomst til stedet fra kl. 12.</p>
+            </div>
+            <div class="timeline__item">
+              <p class="timeline__heading"><span class="timeline__clock">17:00</span><span data-da="Vinsmagning" data-en="Wine tasting">Vinsmagning</span></p>
+              <p class="timeline__description" data-da="Lokal vinmand introducerer stedets vine." data-en="A local vintner introduces the venue wines.">Lokal vinmand introducerer stedets vine.</p>
+            </div>
+            <div class="timeline__item">
+              <p class="timeline__heading"><span class="timeline__clock">19:00</span><span data-da="Italiensk velkomst" data-en="Italian welcome">Italiensk velkomst</span></p>
+              <p class="timeline__description" data-da="Lokal pizzamand kommer og laver pizza." data-en="A local pizzaiolo arrives and serves pizza.">Lokal pizzamand kommer og laver pizza.</p>
+            </div>
+          </article>
+
+          <article class="timeline__group">
+            <p class="timeline__date" data-da="Loerdag d. 12. sep. 2026" data-en="Saturday, Sep 12, 2026">Loerdag d. 12. sep. 2026</p>
+            <div class="timeline__item">
+              <p class="timeline__heading"><span class="timeline__clock">10:00</span><span data-da="Morgenmad" data-en="Breakfast">Morgenmad</span></p>
+              <p class="timeline__description">[Beskrivelse]</p>
+            </div>
+            <div class="timeline__item">
+              <p class="timeline__heading"><span class="timeline__clock">15:00</span><span data-da="Apperitivo" data-en="Aperitivo">Apperitivo</span></p>
+              <p class="timeline__description" data-da="Smagning og introduktion til stedets produkter." data-en="Tasting and introduction to the estate's products.">Smagning og introduktion til stedets produkter.</p>
+            </div>
+            <div class="timeline__item">
+              <p class="timeline__heading"><span class="timeline__clock">19:00</span><span data-da="Middag" data-en="Dinner">Middag</span></p>
+              <p class="timeline__description" data-da="Lokal kok serverer italienske og toscanske delikatesser." data-en="A local chef serves Italian and Tuscan delicacies.">Lokal kok serverer italienske og toscanske delikatesser.</p>
+            </div>
+          </article>
+
+          <article class="timeline__group">
+            <p class="timeline__date" data-da="Soendag d. 13. sep. 2026" data-en="Sunday, Sep 13, 2026">Soendag d. 13. sep. 2026</p>
+            <div class="timeline__item">
+              <p class="timeline__heading"><span class="timeline__clock">10:00</span><span data-da="Morgenmad" data-en="Breakfast">Morgenmad</span></p>
+              <p class="timeline__description">[Beskrivelse]</p>
+            </div>
+            <div class="timeline__item">
+              <p class="timeline__heading"><span class="timeline__clock">15:00</span><span data-da="Pizza" data-en="Pizza">Pizza</span></p>
+              <p class="timeline__description" data-da="Lokal pizzamand kommer og laver pizza." data-en="A local pizzaiolo arrives and serves pizza.">Lokal pizzamand kommer og laver pizza.</p>
+            </div>
+          </article>
+
+          <article class="timeline__group">
+            <p class="timeline__date" data-da="Mandag d. 14. sep. 2026" data-en="Monday, Sep 14, 2026">Mandag d. 14. sep. 2026</p>
+            <div class="timeline__item">
+              <p class="timeline__heading"><span class="timeline__clock">10:00</span><span data-da="Udtjekning" data-en="Check-out">Udtjekning</span></p>
+              <p class="timeline__description" data-da="Afrejse fra Mezzano." data-en="Departure from Mezzano.">Afrejse fra Mezzano.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="info section reveal" id="sektion" aria-labelledby="info-title">
+        <div class="section__head">
+          <p class="eyebrow" data-da="Praktisk info" data-en="Practical info">Praktisk info</p>
+        </div>
+        <ul class="info__list">
+          <li>[Ankomsttid og check-in]</li>
+          <li>[Transport og parkering]</li>
+        </ul>
+      </section>
+
+      <section class="location section reveal" id="lokation" aria-labelledby="location-title">
+        <div class="section__head">
+          <p class="eyebrow" data-da="Lokation" data-en="Location">Lokation</p>
+          <h2 id="location-title" data-da="Agriturismo Mezzano" data-en="Agriturismo Mezzano">Agriturismo Mezzano</h2>
+        </div>
+        <div class="location__layout">
+          <figure class="location__media-circle">
+            <img src="Pics/locimg.webp" alt="Lokationen" loading="lazy" />
+          </figure>
+          <a class="location__map-box location__map-link" href="https://maps.app.goo.gl/APNS3ZLC9i17e56s5" target="_blank" rel="noopener noreferrer" data-da="Aabn Google Maps" data-en="Open Google Maps">Aabn Google Maps</a>
+          <p class="location__address" data-da="Via di Mezzano, Chianti, Toscana, Italien" data-en="Via di Mezzano, Chianti, Tuscany, Italy">Via di Mezzano, Chianti, Toscana, Italien</p>
+        </div>
+      </section>
+
+      <section class="gallery section reveal" id="billedgalleri" aria-labelledby="gallery-title">
+        <div class="section__head">
+          <p class="eyebrow" data-da="Billedgalleri" data-en="Photos from the venue">Billedgalleri</p>
+          <h2 id="gallery-title" data-da="Stemningsbilleder" data-en="Glimpses of the atmosphere">Stemningsbilleder</h2>
+        </div>
+
+        <div class="slideshow" aria-label="Billedslideshow">
+          <button class="slideshow__btn prev" type="button" aria-label="Forrige billede">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M14.5 5.5 8 12l6.5 6.5" />
+            </svg>
+          </button>
+
+          <div class="slideshow__track" data-track>
+            <figure class="slide is-active">
+              <img src="Pics/4e950b_1d9289d241934213bf1a3f136874bfb5~mv2_d_3072_2048_s_2.jpg" alt="Billede af lokationen" loading="lazy" />
+            </figure>
+            <figure class="slide">
+              <img src="Pics/4e950b_b0397e4d79e0480996c56b5333f9d702~mv2_d_3072_2048_s_2.jpg" alt="Billede af lokationen 2" loading="lazy" />
+            </figure>
+            <figure class="slide">
+              <img src="Pics/4e950b_864e00df353943cabeab8379b42e7a3d~mv2_d_3072_2048_s_2.jpg" alt="Billede af lokationen 3" loading="lazy" />
+            </figure>
+            <figure class="slide">
+              <img src="Pics/4e950b_ea5b95566eab4c23951099552e2bc8f9~mv2_d_3072_2048_s_2.jpg" alt="Billede af lokationen 4" loading="lazy" />
+            </figure>
+            <figure class="slide">
+              <img src="Pics/4e950b_1a1c51d00f944e99a732f91f8cb80295~mv2_d_3000_2000_s_2.jpg" alt="Billede af lokationen 5" loading="lazy" />
+            </figure>
+            <figure class="slide">
+              <img src="Pics/4e950b_9cae89a10ec84a8b993ceabe2d686fe3~mv2_d_3000_2000_s_2.jpg" alt="Billede af lokationen 6" loading="lazy" />
+            </figure>
+            <figure class="slide">
+              <img src="Pics/4e950b_c12a7a0a2317436d9fdff2ae62df85c8~mv2_d_3000_2000_s_2.jpg" alt="Billede af lokationen 7" loading="lazy" />
+            </figure>
+            <figure class="slide">
+              <img src="Pics/4e950b_e36a1423b248493c84492d099cdf189f~mv2_d_3000_2000_s_2.jpg" alt="Billede af lokationen 8" loading="lazy" />
+            </figure>
+            <figure class="slide">
+              <img src="Pics/4e950b_0f5fea2d487047cd94e43e8199bd9bcd~mv2_d_2048_3072_s_2.jpg" alt="Billede af lokationen 9" loading="lazy" />
+            </figure>
+            <figure class="slide">
+              <img src="Pics/4e950b_bd83311d99fb48fe9be51486888ad3b2~mv2_d_2143_3000_s_2.jpg" alt="Billede af lokationen 10" loading="lazy" />
+            </figure>
+            <figure class="slide">
+              <img src="Pics/4e950b_9b8d2973e2364526b08c11ec78de8779~mv2.jpg" alt="Billede af lokationen 11" loading="lazy" />
+            </figure>
+            <figure class="slide">
+              <img src="Pics/4e950b_b55eef5e1d824ec98aca41334f35e56c~mv2.jpg" alt="Billede af lokationen 12" loading="lazy" />
+            </figure>
+            <figure class="slide">
+              <img src="Pics/4e950b_3f1627be68324b31a53345137637418c~mv2.jpg" alt="Billede af lokationen 13" loading="lazy" />
+            </figure>
+          </div>
+
+          <button class="slideshow__btn next" type="button" aria-label="Naeste billede">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M9.5 5.5 16 12l-6.5 6.5" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="slideshow__dots" data-dots aria-label="Slide navigation"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p data-da="Glade hilsner - vi opdaterer siden loebende" data-en="Warm regards - we update this page continuously">Glade hilsner - vi opdaterer siden loebende</p>
+    </footer>
+
+    <div class="lightbox" data-lightbox hidden>
+      <button class="lightbox__close" type="button" data-lightbox-close aria-label="Luk billedvisning">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M6 6 18 18" />
+          <path d="M18 6 6 18" />
+        </svg>
+      </button>
+      <button class="lightbox__btn prev" type="button" data-lightbox-prev aria-label="Forrige billede">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M14.5 5.5 8 12l6.5 6.5" />
+        </svg>
+      </button>
+      <img class="lightbox__image" data-lightbox-image src="" alt="" />
+      <button class="lightbox__btn next" type="button" data-lightbox-next aria-label="Naeste billede">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M9.5 5.5 16 12l-6.5 6.5" />
+        </svg>
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
