@@ -24,7 +24,7 @@
           <option value="#countdown" data-da="Nedtælling" data-en="Countdown">Nedtælling</option>
           <option value="#invitation" data-da="Invitation" data-en="Invitation">Invitation</option>
           <option value="#tidsplan" data-da="Tidsplan" data-en="Schedule">Tidsplan</option>
-          <option value="#sektion" data-da="Sektion" data-en="Info">Sektion</option>
+          <option value="#sektion" data-da="Sektion" data-en="Info">Praktisk Info</option>
           <option value="#lokation" data-da="Lokation" data-en="Location">Lokation</option>
           <option value="#billedgalleri" data-da="Billedgalleri" data-en="Gallery">Billedgalleri</option>
         </select>
@@ -32,7 +32,7 @@
         <a href="#countdown" data-da="Nedtælling" data-en="Countdown">Nedtælling</a>
         <a href="#invitation" data-da="Invitation" data-en="Invitation">Invitation</a>
         <a href="#tidsplan" data-da="Tidsplan" data-en="Schedule">Tidsplan</a>
-        <a href="#sektion" data-da="Sektion" data-en="Info">Sektion</a>
+        <a href="#sektion" data-da="Sektion" data-en="Info">Praktisk Info</a>
         <a href="#lokation" data-da="Lokation" data-en="Location">Lokation</a>
         <a href="#billedgalleri" data-da="Billedgalleri" data-en="Gallery">Billedgalleri</a>
         <button class="lang-toggle" type="button" data-language-toggle aria-label="Skift sprog" data-da-label="English" data-en-label="Dansk">English</button>
@@ -94,8 +94,10 @@
               <p class="eyebrow" data-da="Invitation" data-en="Invitation">Invitation</p>
               <h2 id="invite-title" data-da="Kære familie og venner, vi glæder os til at se jer" data-en="Dear family and friends, we look forward to seeing you">Kære familie og venner, vi glæder os til at se jer</h2>
             </div>
-            <p data-da="Under Toscanas sol fejrer vi kærligheden med italienske oplevelser, mad og drikke." data-en="MANGLER OVERSÆTTELSE">
-              Under Toscanas sol fejrer vi kærligheden med italienske oplevelser, mad og drikke.
+            <p data-da="Under Toscanas sol fejrer vi kærligheden med italienske oplevelser, mad og drikke. Inden da bliver vi viet på Rudersdal rådhus - tidspunkt følger. 
+              I er meget velkomne, der vil være et glas champagne efterfølgende og fem dage senere fortsætter vi fejringen i Italien." data-en="MANGLER OVERSÆTTELSE">
+              Under Toscanas sol fejrer vi kærligheden med italienske oplevelser, mad og drikke.<br><br>Inden da bliver vi viet på Rudersdal rådhus - tidspunkt følger.<br>
+              I er meget velkomne, der vil være et glas champagne efterfølgende og fem dage senere fortsætter vi fejringen i Italien.
             </p>
           </div>
           <figure class="invitation__photo">
@@ -107,50 +109,46 @@
       <section class="timeline section reveal" id="tidsplan" aria-labelledby="timeline-title">
         <div class="section__head">
           <p class="eyebrow" data-da="Foreløbig tidsplan" data-en="Preliminary schedule">Foreløbig tidsplan</p>
-          <h2 id="timeline-title" data-da="Programmet opdateres løbende" data-en="The program is updated continuously">Programmet opdateres løbende</h2>
+          <h2 id="timeline-title" data-da="Program" data-en="Schedule">Program</h2>
         </div>
         <div class="timeline__flow">
           <article class="timeline__group">
+            <p class="timeline__date" data-da="Søndag d. 6. sep. 2026" data-en="Sunday, Sep 6, 2026">Søndag d. 6. sep. 2026</p>
+            <div class="timeline__item">
+              <p class="timeline__heading"><span data-da="Vielse på Rudersdal rådhus" data-en="Wedding Ceremony at Rudersdal rådhus">Vielse på Rudersdal rådhus</span></p>
+            </div>
+          </article>
+
+          <article class="timeline__group">
             <p class="timeline__date" data-da="Fredag d. 11. sep. 2026" data-en="Friday, Sep 11, 2026">Fredag d. 11. sep. 2026</p>
             <div class="timeline__item">
-              <p class="timeline__heading"><span class="timeline__clock">12:00</span><span data-da="Ankomst" data-en="Arrival">Ankomst</span></p>
-              <p class="timeline__description" data-da="Ankomst til stedet fra kl. 12." data-en="Arrival at the venue from 12:00.">Ankomst til stedet fra kl. 12.</p>
+              <p class="timeline__heading"><span class="timeline__clock">12:00</span><span data-da="Ankomst fra kl. 12" data-en="Arrival from 12:00 onward">Ankomst fra kl. 12</span></p>
             </div>
             <div class="timeline__item">
-              <p class="timeline__heading"><span class="timeline__clock">17:00</span><span data-da="Vinsmagning" data-en="Wine tasting">Vinsmagning</span></p>
-              <p class="timeline__description" data-da="Lokal vinmand introducerer stedets vine." data-en="A local vintner introduces the venue wines.">Lokal vinmand introducerer stedets vine.</p>
+              <p class="timeline__heading"><span class="timeline__clock">16:00</span><span data-da="Velkomst ved pool" data-en="Welcome by the pool">Velkomst ved pool</span></p>
             </div>
             <div class="timeline__item">
-              <p class="timeline__heading"><span class="timeline__clock">19:00</span><span data-da="Italiensk velkomst" data-en="Italian welcome">Italiensk velkomst</span></p>
-              <p class="timeline__description" data-da="Lokal pizzamand kommer og laver pizza." data-en="A local pizzaiolo arrives and serves pizza.">Lokal pizzamand kommer og laver pizza.</p>
-            </div>
-          </article>
-
-          <article class="timeline__group">
-            <p class="timeline__date" data-da="Loerdag d. 12. sep. 2026" data-en="Saturday, Sep 12, 2026">Loerdag d. 12. sep. 2026</p>
-            <div class="timeline__item">
-              <p class="timeline__heading"><span class="timeline__clock">10:00</span><span data-da="Morgenmad" data-en="Breakfast">Morgenmad</span></p>
-              <p class="timeline__description">[Beskrivelse]</p>
+              <p class="timeline__heading"><span data-da="Vinsmagning" data-en="Wine tasting">Vinsmagning</span></p>
             </div>
             <div class="timeline__item">
-              <p class="timeline__heading"><span class="timeline__clock">15:00</span><span data-da="Apperitivo" data-en="Aperitivo">Apperitivo</span></p>
-              <p class="timeline__description" data-da="Smagning og introduktion til stedets produkter." data-en="Tasting and introduction to the estate's products.">Smagning og introduktion til stedets produkter.</p>
-            </div>
-            <div class="timeline__item">
-              <p class="timeline__heading"><span class="timeline__clock">19:00</span><span data-da="Middag" data-en="Dinner">Middag</span></p>
-              <p class="timeline__description" data-da="Lokal kok serverer italienske og toscanske delikatesser." data-en="A local chef serves Italian and Tuscan delicacies.">Lokal kok serverer italienske og toscanske delikatesser.</p>
+              <p class="timeline__heading"><span data-da="Pizza" data-en="Pizza">Pizza</span></p>
             </div>
           </article>
 
           <article class="timeline__group">
-            <p class="timeline__date" data-da="Soendag d. 13. sep. 2026" data-en="Sunday, Sep 13, 2026">Soendag d. 13. sep. 2026</p>
+            <p class="timeline__date" data-da="Lørdag d. 12. sep. 2026" data-en="Saturday, Sep 12, 2026">Lørdag d. 12. sep. 2026</p>
             <div class="timeline__item">
-              <p class="timeline__heading"><span class="timeline__clock">10:00</span><span data-da="Morgenmad" data-en="Breakfast">Morgenmad</span></p>
-              <p class="timeline__description">[Beskrivelse]</p>
+              <p class="timeline__heading"><span data-da="Aperitivo og olivenoliesmagning" data-en="Aperitivo and olive oil tasting">Aperitivo og olivenoliesmagning</span></p>
             </div>
             <div class="timeline__item">
-              <p class="timeline__heading"><span class="timeline__clock">15:00</span><span data-da="Pizza" data-en="Pizza">Pizza</span></p>
-              <p class="timeline__description" data-da="Lokal pizzamand kommer og laver pizza." data-en="A local pizzaiolo arrives and serves pizza.">Lokal pizzamand kommer og laver pizza.</p>
+              <p class="timeline__heading"><span data-da="Bryllupsmiddag" data-en="Wedding Dinner">Bryllupsmiddag</span></p>
+            </div>
+          </article>
+
+          <article class="timeline__group">
+            <p class="timeline__date" data-da="Søndag d. 13. sep. 2026" data-en="Sunday, Sep 13, 2026">Søndag d. 13. sep. 2026</p>
+            <div class="timeline__item">
+              <p class="timeline__heading"><span data-da="Afslapning" data-en="Relaxing">Afslapning</span></p>
             </div>
           </article>
 
@@ -158,7 +156,6 @@
             <p class="timeline__date" data-da="Mandag d. 14. sep. 2026" data-en="Monday, Sep 14, 2026">Mandag d. 14. sep. 2026</p>
             <div class="timeline__item">
               <p class="timeline__heading"><span class="timeline__clock">10:00</span><span data-da="Udtjekning" data-en="Check-out">Udtjekning</span></p>
-              <p class="timeline__description" data-da="Afrejse fra Mezzano." data-en="Departure from Mezzano.">Afrejse fra Mezzano.</p>
             </div>
           </article>
         </div>
@@ -168,9 +165,11 @@
         <div class="section__head">
           <p class="eyebrow" data-da="Praktisk info" data-en="Practical info">Praktisk info</p>
         </div>
+          <p data-da="Agriturismo Mezzano ligger 40 minutter fra Firenze lufthavn og halvanden time fra Pisa og Bologna lufthavn. Boligen består af otte lejligheder, en masse fællesarealer ude- og indendørs, samt en swimming pool." data-en="hov">
+            Agriturismo Mezzano ligger 40 minutter fra Firenze lufthavn og halvanden time fra Pisa og Bologna lufthavn. Boligen består af otte lejligheder, en masse fællesarealer ude- og indendørs, samt en stor pool.</p>
         <ul class="info__list">
-          <li>[Ankomsttid og check-in]</li>
-          <li>[Transport og parkering]</li>
+          <li>Vi regner med godt vejr! Husk badetøj, sommerskjorten og en lille trøje til om aftenen</li>
+          <li>Vi sørger for mad og drikke. Vi køber ind til en let frokost om fredagen, til dem der ankommer omkring frokosttid.</li>
         </ul>
       </section>
 
