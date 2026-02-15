@@ -177,14 +177,25 @@ function setupLanguageToggle(slideshowApi) {
     return;
   }
 
-  const translatable = Array.from(document.querySelectorAll("[data-da][data-en]"));
+  const translatable = Array.from(
+    document.querySelectorAll("[data-da][data-en], [data-da-html][data-en-html]")
+  );
 
   function applyLanguage(lang) {
     currentLanguage = lang;
     document.documentElement.lang = lang;
 
     translatable.forEach(node => {
-      node.textContent = node.getAttribute(`data-${lang}`) || node.textContent;
+      const htmlValue = node.getAttribute(`data-${lang}-html`);
+      if (htmlValue !== null) {
+        node.innerHTML = htmlValue;
+        return;
+      }
+
+      const textValue = node.getAttribute(`data-${lang}`);
+      if (textValue !== null) {
+        node.textContent = textValue;
+      }
     });
 
     document.querySelectorAll("[data-da-aria-label][data-en-aria-label]").forEach(node => {

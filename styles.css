@@ -53,7 +53,7 @@ main {
 #velkommen,
 #countdown,
 #invitation,
-#sektion,
+#information,
 #tidsplan,
 #lokation,
 #billedgalleri {
@@ -179,7 +179,7 @@ img {
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   margin: 0;
   color: var(--muted);
 }
@@ -202,7 +202,7 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(1.7rem, 5vw, 2.7rem);
+  font-size: clamp(1.85rem, 5.2vw, 2.9rem);
   margin-top: 0.45rem;
 }
 
@@ -243,6 +243,7 @@ h2 {
 
 .countdown .section__head {
   margin-bottom: 1.4rem;
+  text-align: left;
 }
 
 .countdown__grid {
@@ -306,7 +307,7 @@ h2 {
   text-align: left;
 }
 
-.invitation p {
+.invitation__text > p {
   margin: 0;
   max-width: 67ch;
   font-size: clamp(1.03rem, 2.4vw, 1.16rem);
@@ -340,15 +341,35 @@ h2 {
   padding-left: 0.25rem;
 }
 
+.timeline {
+  display: block;
+}
+
+.timeline .section__head {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
+}
+
+.timeline .section__head h2 {
+  width: 100%;
+  text-align: left;
+}
+
 .timeline__flow {
   display: grid;
   gap: 1.45rem;
   margin-top: 0.65rem;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .timeline__group {
   position: relative;
   padding: 0.45rem 0 0.25rem;
+  width: 100%;
 }
 
 .timeline__group::before {
@@ -408,6 +429,11 @@ h2 {
 }
 
 .location .section__head {
+  text-align: left;
+}
+
+.location .section__head h2 {
+  width: 100%;
   text-align: center;
 }
 
@@ -525,6 +551,10 @@ h2 {
 
   .slide img {
     height: clamp(220px, 58vw, 420px);
+  }
+
+  .timeline__flow {
+    max-width: 90vw;
   }
 
   .invitation__photo {
