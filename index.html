@@ -25,6 +25,7 @@
           <option value="#invitation" data-da="Invitation" data-en="Invitation">Invitation</option>
           <option value="#tidsplan" data-da="Tidsplan" data-en="Schedule">Tidsplan</option>
           <option value="#information" data-da="Information" data-en="Information">Information</option>
+          <option value="#mindebox" data-da="Del billeder" data-en="Share photos">Del billeder</option>
           <option value="#lokation" data-da="Lokation" data-en="Location">Lokation</option>
           <option value="#billedgalleri" data-da="Billedgalleri" data-en="Gallery">Billedgalleri</option>
         </select>
@@ -33,6 +34,7 @@
         <a href="#invitation" data-da="Invitation" data-en="Invitation">Invitation</a>
         <a href="#tidsplan" data-da="Tidsplan" data-en="Schedule">Tidsplan</a>
         <a href="#information" data-da="Information" data-en="Information">Information</a>
+        <a href="#mindebox" data-da="Del billeder" data-en="Share photos">Del billeder</a>
         <a href="#lokation" data-da="Lokation" data-en="Location">Lokation</a>
         <a href="#billedgalleri" data-da="Billedgalleri" data-en="Gallery">Billedgalleri</a>
         <button class="lang-toggle" type="button" data-language-toggle aria-label="Skift sprog" data-da-aria-label="Skift sprog" data-en-aria-label="Change language" data-da-label="English" data-en-label="Dansk">English</button>
@@ -127,9 +129,6 @@
               <p class="timeline__heading"><span class="timeline__clock">16:00</span><span data-da="Velkomst ved pool" data-en="Welcome by the pool">Velkomst ved pool</span></p>
             </div>
             <div class="timeline__item">
-              <p class="timeline__heading"><span data-da="Vinsmagning" data-en="Wine tasting">Vinsmagning</span></p>
-            </div>
-            <div class="timeline__item">
               <p class="timeline__heading"><span data-da="Pizza" data-en="Pizza">Pizza</span></p>
             </div>
           </article>
@@ -175,6 +174,27 @@
         <p data-da="Ønskeliste: Vi ønsker at se dig i Italien ♡" data-en="Wish list: We wish to see you in Italy ♡" data-da-html="<b>Ønskeliste</b>: Vi ønsker at se dig i Italien ♡" data-en-html="<b>Wish list</b>: We wish to see you in Italy ♡"><b>Ønskeliste</b>: Vi ønsker at se dig i Italien ♡</p>
       </section>
 
+      <section class="mindebox section reveal" id="mindebox" aria-labelledby="mindebox-title">
+        <div class="section__head">
+          <p class="eyebrow" data-da="Del minderne" data-en="Share the memories">Del minderne</p>
+          <h2 id="mindebox-title" data-da="Del dine billeder og videoer" data-en="Share your photos and videos">Del dine billeder og videoer</h2>
+        </div>
+        <div class="mindebox__layout">
+          <figure class="mindebox__qr">
+            <img src="Pics/mindebox-qr.png" alt="QR-kode til MindeBox" data-da-alt="QR-kode til MindeBox" data-en-alt="QR code for MindeBox" loading="lazy" />
+          </figure>
+          <div class="mindebox__content">
+            <p class="mindebox__intro" data-da="Hjælp os med at samle alle de små og store øjeblikke fra weekenden i vores fælles MindeBox." data-en="Help us collect all the big and small moments from the weekend in our shared MindeBox.">Hjælp os med at samle alle de små og store øjeblikke fra weekenden i vores fælles MindeBox.</p>
+            <ol class="mindebox__steps">
+              <li data-da="Scan QR-koden med kameraet på din telefon." data-en="Scan the QR code with your phone’s camera.">Scan QR-koden med kameraet på din telefon.</li>
+              <li data-da="Tryk på “Upload”, og vælg de billeder og videoer, du vil dele." data-en="Tap “Upload” and choose the photos and videos you would like to share.">Tryk på “Upload”, og vælg de billeder og videoer, du vil dele.</li>
+              <li data-da="Tryk på “Upload” igen – så er de delt med os." data-en="Tap “Upload” again — then they are shared with us.">Tryk på “Upload” igen – så er de delt med os.</li>
+            </ol>
+            <p class="mindebox__note" data-da="Du behøver hverken app eller login." data-en="No app or login is needed.">Du behøver hverken app eller login.</p>
+          </div>
+        </div>
+      </section>
+
       <section class="location section reveal" id="lokation" aria-labelledby="location-title">
         <div class="section__head">
           <p class="eyebrow" data-da="Lokation" data-en="Location">Lokation</p>
@@ -186,6 +206,10 @@
           </figure>
           <a class="location__map-box location__map-link" href="https://maps.app.goo.gl/APNS3ZLC9i17e56s5" target="_blank" rel="noopener noreferrer" data-da="Åbn Google Maps" data-en="Open Google Maps">Åbn Google Maps</a>
           <p class="location__address" data-da="Via di Mezzano, Chianti, Toscana, Italien" data-en="Via di Mezzano, Chianti, Tuscany, Italy">Via di Mezzano, Chianti, Toscana, Italien</p>
+          <figure class="location__arrival">
+            <img src="Pics/arrival-turn.jpg" alt="Vejen med skiltet mod Mezzano" data-da-alt="Vejen med skiltet mod Mezzano" data-en-alt="The road with the sign for Mezzano" loading="lazy" />
+            <figcaption data-da="Når I næsten er fremme, skal I dreje til højre ad vejen med skiltet mod Mezzano – se billedet." data-en="When you are nearly there, turn right onto the road with the sign for Mezzano — see the photo.">Når I næsten er fremme, skal I dreje til højre ad vejen med skiltet mod Mezzano – se billedet.</figcaption>
+          </figure>
         </div>
       </section>
 

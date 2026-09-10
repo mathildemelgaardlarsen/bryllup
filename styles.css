@@ -55,6 +55,7 @@ main {
 #invitation,
 #information,
 #tidsplan,
+#mindebox,
 #lokation,
 #billedgalleri {
   scroll-margin-top: 84px;
@@ -341,6 +342,61 @@ h2 {
   padding-left: 0.25rem;
 }
 
+.mindebox__layout {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.mindebox__qr {
+  margin: 0;
+  width: min(100%, 260px);
+  justify-self: center;
+  padding: 0.8rem;
+  border-radius: var(--radius);
+  background: #fffefb;
+  border: 1px solid rgba(127, 96, 80, 0.24);
+  box-shadow: 0 12px 26px rgba(88, 70, 55, 0.12);
+}
+
+.mindebox__qr img {
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.mindebox__content {
+  max-width: 58ch;
+}
+
+.mindebox__intro {
+  margin: 0;
+  font-size: clamp(1.03rem, 2.4vw, 1.16rem);
+}
+
+.mindebox__steps {
+  margin: 1rem 0 0;
+  padding-left: 1.55rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.mindebox__steps li {
+  padding-left: 0.35rem;
+}
+
+.mindebox__steps li::marker {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.mindebox__note {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
 .timeline {
   display: block;
 }
@@ -497,6 +553,26 @@ h2 {
 
 .location__address {
   margin: 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+.location__arrival {
+  margin: 1rem 0 0;
+  width: min(100%, 540px);
+}
+
+.location__arrival img {
+  width: 100%;
+  max-height: 540px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid rgba(127, 96, 80, 0.25);
+  box-shadow: 0 12px 26px rgba(88, 70, 55, 0.12);
+}
+
+.location__arrival figcaption {
+  margin-top: 0.7rem;
   color: var(--muted);
   text-align: center;
 }
@@ -750,6 +826,15 @@ h2 {
   .countdown__grid {
     grid-template-columns: repeat(4, minmax(150px, 1fr));
     gap: 0.6rem 1.4rem;
+  }
+
+  .mindebox__layout {
+    grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+    gap: 2.3rem;
+  }
+
+  .mindebox__qr {
+    justify-self: start;
   }
 }
 

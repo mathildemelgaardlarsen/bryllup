@@ -205,6 +205,13 @@ function setupLanguageToggle(slideshowApi) {
       }
     });
 
+    document.querySelectorAll("[data-da-alt][data-en-alt]").forEach(node => {
+      const value = node.getAttribute(`data-${lang}-alt`);
+      if (value) {
+        node.setAttribute("alt", value);
+      }
+    });
+
     const buttonLabel = toggle.getAttribute(`data-${lang}-label`);
     if (buttonLabel) {
       toggle.textContent = buttonLabel;
