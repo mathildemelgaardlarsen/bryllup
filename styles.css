@@ -666,7 +666,7 @@ h2 {
 .slideshow__counter {
   color: var(--muted);
   font-variant-numeric: tabular-nums;
-  font-size: 0.92rem;
+  font-size: 1.1rem;
 }
 
 .gallery__link {
