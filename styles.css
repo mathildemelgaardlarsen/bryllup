@@ -680,7 +680,8 @@ h2 {
 }
 
 .gallery__mindebox {
-  max-width: 52ch;
+  width: 100%;
+  max-width: none;
   margin: 0;
   text-align: left;
 }
