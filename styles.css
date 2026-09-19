@@ -996,6 +996,13 @@ h2 {
   }
 }
 
+@media (min-width: 761px) {
+  .gallery--wedding .gallery__note {
+    white-space: nowrap;
+    font-size: 0.78rem;
+  }
+}
+
 @media (min-width: 1000px) {
   .topnav__inner {
     flex-wrap: nowrap;
