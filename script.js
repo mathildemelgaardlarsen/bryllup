@@ -56,6 +56,12 @@ function setupWeddingSlideshow() {
     return `${prefix} ${index + 1}${photo.alt ? `: ${photo.alt}` : ""}`;
   }
 
+  function preloadPreview(index) {
+    const photo = photos[(index + photos.length) % photos.length];
+    const preview = new Image();
+    preview.src = photo.thumb || photo.src;
+  }
+
   function render() {
     const index = current;
     const photo = photos[index];
@@ -86,6 +92,8 @@ function setupWeddingSlideshow() {
       }
     });
     fullImage.src = photo.src;
+    preloadPreview(current + 1);
+    preloadPreview(current - 1);
   }
 
   function goTo(index) {

@@ -657,6 +657,12 @@ h2 {
   margin-top: 0.8rem;
 }
 
+.gallery--wedding .slideshow__meta {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
 .slideshow__counter {
   color: var(--muted);
   font-variant-numeric: tabular-nums;
@@ -675,7 +681,7 @@ h2 {
 
 .gallery__mindebox {
   max-width: 52ch;
-  margin-right: auto;
+  margin: 0;
   text-align: left;
 }
 
