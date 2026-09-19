@@ -693,7 +693,7 @@ h2 {
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
-  font-size: 1.1rem;
+  font-size: 1.35rem !important;
 }
 
 @media (max-width: 760px) {
