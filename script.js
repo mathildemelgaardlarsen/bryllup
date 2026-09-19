@@ -49,24 +49,38 @@ function setupWeddingSlideshow() {
   }
 
   let current = 0;
-  let fullImage;
+  const preloadedFullImages = new Map();
 
   function getAlt(photo, index) {
     const prefix = currentLanguage === "da" ? "Bryllupsbillede" : "Wedding photo";
     return `${prefix} ${index + 1}${photo.alt ? `: ${photo.alt}` : ""}`;
   }
 
-  function preloadPreview(index) {
-    const photo = photos[(index + photos.length) % photos.length];
-    const preview = new Image();
-    preview.src = photo.thumb || photo.src;
+  function preloadFullImage(index) {
+    const normalizedIndex = (index + photos.length) % photos.length;
+    if (preloadedFullImages.has(normalizedIndex)) {
+      return preloadedFullImages.get(normalizedIndex);
+    }
+
+    const preload = new Image();
+    preload.src = photos[normalizedIndex].src;
+    preloadedFullImages.set(normalizedIndex, preload);
+    return preload;
+  }
+
+  function trimPreloadedImages() {
+    const keep = new Set([current, (current + 1) % photos.length, (current - 1 + photos.length) % photos.length]);
+    preloadedFullImages.forEach((_, index) => {
+      if (!keep.has(index)) {
+        preloadedFullImages.delete(index);
+      }
+    });
   }
 
   function render() {
     const index = current;
     const photo = photos[index];
     slideshow.classList.add("is-loading");
-    image.src = photo.thumb || photo.src;
     image.alt = getAlt(photo, current);
     image.setAttribute("data-da-alt", `Bryllupsbillede ${current + 1}${photo.alt ? `: ${photo.alt}` : ""}`);
     image.setAttribute("data-en-alt", `Wedding photo ${current + 1}${photo.alt ? `: ${photo.alt}` : ""}`);
@@ -78,22 +92,28 @@ function setupWeddingSlideshow() {
       lightboxImage.alt = image.alt;
     }
 
-    fullImage = new Image();
-    fullImage.addEventListener("load", () => {
+    const fullImage = preloadFullImage(index);
+    const showFullImage = () => {
       if (current !== index) {
         return;
       }
       image.src = photo.src;
       slideshow.classList.remove("is-loading");
-    });
+    };
+
+    if (fullImage.complete && fullImage.naturalWidth) {
+      showFullImage();
+    } else {
+      fullImage.addEventListener("load", showFullImage, { once: true });
+    }
     fullImage.addEventListener("error", () => {
       if (current === index) {
         slideshow.classList.remove("is-loading");
       }
-    });
-    fullImage.src = photo.src;
-    preloadPreview(current + 1);
-    preloadPreview(current - 1);
+    }, { once: true });
+    preloadFullImage(current + 1);
+    preloadFullImage(current - 1);
+    trimPreloadedImages();
   }
 
   function goTo(index) {

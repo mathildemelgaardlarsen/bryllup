@@ -689,7 +689,11 @@ h2 {
 .gallery__note {
   margin: 0.2rem 0 0;
   color: var(--muted);
-  font-size: 0.9rem;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  font-size: clamp(0.68rem, 1.3vw, 0.78rem);
 }
 
 @media (max-width: 760px) {
@@ -993,13 +997,6 @@ h2 {
   .topnav__select {
     display: block;
     flex: 1 1 auto;
-  }
-}
-
-@media (min-width: 761px) {
-  .gallery--wedding .gallery__note {
-    white-space: nowrap;
-    font-size: 0.78rem;
   }
 }
 
