@@ -602,6 +602,22 @@ h2 {
   width: 100%;
 }
 
+.slideshow--wedding.is-loading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  z-index: 3;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-left: -0.55rem;
+  border: 2px solid rgba(255, 255, 255, 0.58);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+  pointer-events: none;
+}
+
 .slide {
   display: none;
   margin: 0;
@@ -611,6 +627,12 @@ h2 {
 .slide.is-active {
   display: block;
   animation: fadeIn 500ms ease;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .slide img {
@@ -653,7 +675,8 @@ h2 {
 
 .gallery__mindebox {
   max-width: 52ch;
-  text-align: right;
+  margin-right: auto;
+  text-align: left;
 }
 
 .gallery__note {
@@ -676,9 +699,6 @@ h2 {
     flex-direction: column;
   }
 
-  .gallery__mindebox {
-    text-align: left;
-  }
 
   .timeline__flow {
     max-width: 90vw;

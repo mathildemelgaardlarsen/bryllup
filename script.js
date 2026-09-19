@@ -49,6 +49,7 @@ function setupWeddingSlideshow() {
   }
 
   let current = 0;
+  let fullImage;
 
   function getAlt(photo, index) {
     const prefix = currentLanguage === "da" ? "Bryllupsbillede" : "Wedding photo";
@@ -56,8 +57,10 @@ function setupWeddingSlideshow() {
   }
 
   function render() {
-    const photo = photos[current];
-    image.src = photo.src;
+    const index = current;
+    const photo = photos[index];
+    slideshow.classList.add("is-loading");
+    image.src = photo.thumb || photo.src;
     image.alt = getAlt(photo, current);
     image.setAttribute("data-da-alt", `Bryllupsbillede ${current + 1}${photo.alt ? `: ${photo.alt}` : ""}`);
     image.setAttribute("data-en-alt", `Wedding photo ${current + 1}${photo.alt ? `: ${photo.alt}` : ""}`);
@@ -68,6 +71,21 @@ function setupWeddingSlideshow() {
       lightboxImage.src = photo.src;
       lightboxImage.alt = image.alt;
     }
+
+    fullImage = new Image();
+    fullImage.addEventListener("load", () => {
+      if (current !== index) {
+        return;
+      }
+      image.src = photo.src;
+      slideshow.classList.remove("is-loading");
+    });
+    fullImage.addEventListener("error", () => {
+      if (current === index) {
+        slideshow.classList.remove("is-loading");
+      }
+    });
+    fullImage.src = photo.src;
   }
 
   function goTo(index) {
