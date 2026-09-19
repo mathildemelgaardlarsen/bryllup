@@ -666,7 +666,7 @@ h2 {
 .slideshow__counter {
   color: var(--muted);
   font-variant-numeric: tabular-nums;
-  font-size: 1.1rem;
+  font-size: 0.92rem;
 }
 
 .gallery__link {
@@ -693,7 +693,7 @@ h2 {
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
-  font-size: 0.92rem;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 760px) {
