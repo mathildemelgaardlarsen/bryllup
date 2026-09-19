@@ -41,7 +41,8 @@ function buildWeddingSlideshow() {
 
   const fragment = document.createDocumentFragment();
 
-  photos.forEach((photo, index) => {
+  photos.slice(1).forEach((photo, index) => {
+    const photoIndex = index + 1;
     const slide = document.createElement("figure");
     slide.className = "slide";
 
@@ -49,10 +50,10 @@ function buildWeddingSlideshow() {
     const fileName = photo.alt || "";
     image.src = photo.thumb || photo.src;
     image.dataset.fullSrc = photo.src;
-    image.alt = `Bryllupsbillede ${index + 1}${fileName ? `: ${fileName}` : ""}`;
-    image.setAttribute("data-da-alt", `Bryllupsbillede ${index + 1}${fileName ? `: ${fileName}` : ""}`);
-    image.setAttribute("data-en-alt", `Wedding photo ${index + 1}${fileName ? `: ${fileName}` : ""}`);
-    image.loading = index < 2 ? "eager" : "lazy";
+    image.alt = `Bryllupsbillede ${photoIndex + 1}${fileName ? `: ${fileName}` : ""}`;
+    image.setAttribute("data-da-alt", `Bryllupsbillede ${photoIndex + 1}${fileName ? `: ${fileName}` : ""}`);
+    image.setAttribute("data-en-alt", `Wedding photo ${photoIndex + 1}${fileName ? `: ${fileName}` : ""}`);
+    image.loading = photoIndex < 2 ? "eager" : "lazy";
     image.addEventListener("error", () => {
       if (image.src !== image.dataset.fullSrc) {
         image.src = image.dataset.fullSrc;
@@ -101,10 +102,12 @@ function setupSlideshows() {
 
   document.querySelectorAll("[data-slideshow]").forEach(slideshow => {
     const slides = Array.from(slideshow.querySelectorAll(".slide"));
-    const dotsWrap = slideshow.parentElement.querySelector(":scope > [data-dots]");
+    const sectionChildren = Array.from(slideshow.parentElement.children);
+    const dotsWrap = sectionChildren.find(child => child.matches("[data-dots]"));
     const prev = slideshow.querySelector(".slideshow__btn.prev");
     const next = slideshow.querySelector(".slideshow__btn.next");
-    const counter = slideshow.parentElement.querySelector(":scope > .slideshow__meta [data-slide-counter]");
+    const meta = sectionChildren.find(child => child.matches(".slideshow__meta"));
+    const counter = meta?.querySelector("[data-slide-counter]");
 
     if (!slides.length || !prev || !next) {
       return;
