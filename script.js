@@ -33,7 +33,10 @@ function setUnit(unit, value) {
 
 function setupWeddingSlideshow() {
   const slideshow = document.querySelector("[data-wedding-slideshow]");
-  const photos = window.weddingPhotos;
+  const sourcePhotos = window.weddingPhotos;
+  const photos = Array.isArray(sourcePhotos) && sourcePhotos.length > 28
+    ? [sourcePhotos[28], ...sourcePhotos.slice(0, 28), ...sourcePhotos.slice(29)]
+    : sourcePhotos;
   const image = slideshow?.querySelector(".slide img");
   const prev = slideshow?.querySelector(".slideshow__btn.prev");
   const next = slideshow?.querySelector(".slideshow__btn.next");
