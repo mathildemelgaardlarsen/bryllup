@@ -31,40 +31,102 @@ function setUnit(unit, value) {
   }
 }
 
-function buildWeddingSlideshow() {
-  const track = document.querySelector("[data-wedding-track]");
+function setupWeddingSlideshow() {
+  const slideshow = document.querySelector("[data-wedding-slideshow]");
   const photos = window.weddingPhotos;
+  const image = slideshow?.querySelector(".slide img");
+  const prev = slideshow?.querySelector(".slideshow__btn.prev");
+  const next = slideshow?.querySelector(".slideshow__btn.next");
+  const counter = document.querySelector("#bryllupsbilleder [data-slide-counter]");
+  const lightbox = document.querySelector("[data-lightbox]");
+  const lightboxImage = document.querySelector("[data-lightbox-image]");
+  const lightboxPrev = document.querySelector("[data-lightbox-prev]");
+  const lightboxNext = document.querySelector("[data-lightbox-next]");
+  const lightboxClose = document.querySelector("[data-lightbox-close]");
 
-  if (!track || !Array.isArray(photos) || !photos.length) {
+  if (!slideshow || !image || !prev || !next || !Array.isArray(photos) || !photos.length) {
     return;
   }
 
-  const fragment = document.createDocumentFragment();
+  let current = 0;
 
-  photos.slice(1).forEach((photo, index) => {
-    const photoIndex = index + 1;
-    const slide = document.createElement("figure");
-    slide.className = "slide";
+  function getAlt(photo, index) {
+    const prefix = currentLanguage === "da" ? "Bryllupsbillede" : "Wedding photo";
+    return `${prefix} ${index + 1}${photo.alt ? `: ${photo.alt}` : ""}`;
+  }
 
-    const image = document.createElement("img");
-    const fileName = photo.alt || "";
-    image.src = photo.thumb || photo.src;
-    image.dataset.fullSrc = photo.src;
-    image.alt = `Bryllupsbillede ${photoIndex + 1}${fileName ? `: ${fileName}` : ""}`;
-    image.setAttribute("data-da-alt", `Bryllupsbillede ${photoIndex + 1}${fileName ? `: ${fileName}` : ""}`);
-    image.setAttribute("data-en-alt", `Wedding photo ${photoIndex + 1}${fileName ? `: ${fileName}` : ""}`);
-    image.loading = photoIndex < 2 ? "eager" : "lazy";
-    image.addEventListener("error", () => {
-      if (image.src !== image.dataset.fullSrc) {
-        image.src = image.dataset.fullSrc;
-      }
-    });
+  function render() {
+    const photo = photos[current];
+    image.src = photo.src;
+    image.alt = getAlt(photo, current);
+    image.setAttribute("data-da-alt", `Bryllupsbillede ${current + 1}${photo.alt ? `: ${photo.alt}` : ""}`);
+    image.setAttribute("data-en-alt", `Wedding photo ${current + 1}${photo.alt ? `: ${photo.alt}` : ""}`);
+    if (counter) {
+      counter.textContent = `${current + 1} / ${photos.length}`;
+    }
+    if (lightbox && !lightbox.hidden && lightboxImage) {
+      lightboxImage.src = photo.src;
+      lightboxImage.alt = image.alt;
+    }
+  }
 
-    slide.appendChild(image);
-    fragment.appendChild(slide);
+  function goTo(index) {
+    current = (index + photos.length) % photos.length;
+    render();
+  }
+
+  function closeLightbox() {
+    if (!lightbox) {
+      return;
+    }
+    lightbox.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  prev.addEventListener("click", () => goTo(current - 1));
+  next.addEventListener("click", () => goTo(current + 1));
+  image.style.cursor = "zoom-in";
+  image.addEventListener("click", () => {
+    if (!lightbox || !lightboxImage) {
+      return;
+    }
+    lightboxImage.src = photos[current].src;
+    lightboxImage.alt = image.alt;
+    lightbox.hidden = false;
+    document.body.style.overflow = "hidden";
   });
 
-  track.appendChild(fragment);
+  lightboxPrev?.addEventListener("click", () => {
+    if (lightbox && !lightbox.hidden) {
+      goTo(current - 1);
+    }
+  });
+  lightboxNext?.addEventListener("click", () => {
+    if (lightbox && !lightbox.hidden) {
+      goTo(current + 1);
+    }
+  });
+  lightboxClose?.addEventListener("click", closeLightbox);
+  lightbox?.addEventListener("click", event => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  window.addEventListener("keydown", event => {
+    if (!lightbox || lightbox.hidden) {
+      return;
+    }
+    if (event.key === "Escape") {
+      closeLightbox();
+    } else if (event.key === "ArrowRight") {
+      goTo(current + 1);
+    } else if (event.key === "ArrowLeft") {
+      goTo(current - 1);
+    }
+  });
+
+  render();
 }
 
 function setupSlideshows() {
@@ -100,7 +162,7 @@ function setupSlideshows() {
     activeController = null;
   }
 
-  document.querySelectorAll("[data-slideshow]").forEach(slideshow => {
+  document.querySelectorAll("[data-slideshow]:not([data-wedding-slideshow])").forEach(slideshow => {
     const slides = Array.from(slideshow.querySelectorAll(".slide"));
     const sectionChildren = Array.from(slideshow.parentElement.children);
     const dotsWrap = sectionChildren.find(child => child.matches("[data-dots]"));
@@ -351,8 +413,8 @@ function setupReveal() {
 
 updateCountdown();
 window.setInterval(updateCountdown, 1000);
-buildWeddingSlideshow();
 const slideshowApi = setupSlideshows();
+setupWeddingSlideshow();
 setupLanguageToggle(slideshowApi);
 setupSectionSelect();
 setupReveal();
