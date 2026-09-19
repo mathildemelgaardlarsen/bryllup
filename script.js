@@ -31,90 +31,60 @@ function setUnit(unit, value) {
   }
 }
 
-function setupSlideshow() {
-  const slides = Array.from(document.querySelectorAll(".slide"));
-  const dotsWrap = document.querySelector("[data-dots]");
-  const prev = document.querySelector(".slideshow__btn.prev");
-  const next = document.querySelector(".slideshow__btn.next");
+function buildWeddingSlideshow() {
+  const track = document.querySelector("[data-wedding-track]");
+  const photos = window.weddingPhotos;
+
+  if (!track || !Array.isArray(photos) || !photos.length) {
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+
+  photos.forEach((photo, index) => {
+    const slide = document.createElement("figure");
+    slide.className = "slide";
+
+    const image = document.createElement("img");
+    const fileName = photo.alt || "";
+    image.src = photo.thumb || photo.src;
+    image.dataset.fullSrc = photo.src;
+    image.alt = `Bryllupsbillede ${index + 1}${fileName ? `: ${fileName}` : ""}`;
+    image.setAttribute("data-da-alt", `Bryllupsbillede ${index + 1}${fileName ? `: ${fileName}` : ""}`);
+    image.setAttribute("data-en-alt", `Wedding photo ${index + 1}${fileName ? `: ${fileName}` : ""}`);
+    image.loading = index < 2 ? "eager" : "lazy";
+    image.addEventListener("error", () => {
+      if (image.src !== image.dataset.fullSrc) {
+        image.src = image.dataset.fullSrc;
+      }
+    });
+
+    slide.appendChild(image);
+    fragment.appendChild(slide);
+  });
+
+  track.appendChild(fragment);
+}
+
+function setupSlideshows() {
   const lightbox = document.querySelector("[data-lightbox]");
   const lightboxImage = document.querySelector("[data-lightbox-image]");
   const lightboxPrev = document.querySelector("[data-lightbox-prev]");
   const lightboxNext = document.querySelector("[data-lightbox-next]");
   const lightboxClose = document.querySelector("[data-lightbox-close]");
+  const controllers = [];
+  let activeController = null;
 
-  if (!slides.length || !dotsWrap || !prev || !next) {
-    return;
-  }
-
-  let current = 0;
-  let timer;
-
-  slides.forEach((slide, i) => {
-    const dot = document.createElement("button");
-    dot.className = "dot";
-    dot.type = "button";
-    dot.setAttribute("aria-label", getSlideAria(i + 1));
-    dot.addEventListener("click", () => {
-      goTo(i);
-      restartAuto();
-    });
-    dotsWrap.appendChild(dot);
-
-    const image = slide.querySelector("img");
-    if (image && lightbox) {
-      image.style.cursor = "zoom-in";
-      image.addEventListener("click", () => openLightbox());
-    }
-  });
-
-  function getSlideAria(index) {
-    return currentLanguage === "da" ? `Gaa til billede ${index}` : `Go to image ${index}`;
-  }
-
-  function refreshDotLabels() {
-    Array.from(dotsWrap.children).forEach((dot, index) => {
-      dot.setAttribute("aria-label", getSlideAria(index + 1));
-    });
-  }
-
-  function goTo(index) {
-    slides[current].classList.remove("is-active");
-    dotsWrap.children[current].classList.remove("is-active");
-    current = (index + slides.length) % slides.length;
-    slides[current].classList.add("is-active");
-    dotsWrap.children[current].classList.add("is-active");
-
-    if (lightbox && !lightbox.hidden && lightboxImage) {
-      const img = slides[current].querySelector("img");
-      if (img) {
-        lightboxImage.src = img.currentSrc || img.src;
-        lightboxImage.alt = img.alt;
-      }
-    }
-  }
-
-  function nextSlide() {
-    goTo(current + 1);
-  }
-
-  function previousSlide() {
-    goTo(current - 1);
-  }
-
-  function restartAuto() {
-    window.clearInterval(timer);
-    timer = window.setInterval(nextSlide, 5000);
-  }
-
-  function openLightbox() {
+  function openLightbox(controller) {
     if (!lightbox || !lightboxImage) {
       return;
     }
-    const img = slides[current].querySelector("img");
+    const img = controller.getCurrentImage();
     if (!img) {
       return;
     }
-    lightboxImage.src = img.currentSrc || img.src;
+    activeController = controller;
+    lightboxImage.src = img.dataset.fullSrc || img.currentSrc || img.src;
     lightboxImage.alt = img.alt;
     lightbox.hidden = false;
     document.body.style.overflow = "hidden";
@@ -126,21 +96,135 @@ function setupSlideshow() {
     }
     lightbox.hidden = true;
     document.body.style.overflow = "";
+    activeController = null;
   }
 
-  prev.addEventListener("click", () => {
-    previousSlide();
-    restartAuto();
-  });
+  document.querySelectorAll("[data-slideshow]").forEach(slideshow => {
+    const slides = Array.from(slideshow.querySelectorAll(".slide"));
+    const dotsWrap = slideshow.parentElement.querySelector(":scope > [data-dots]");
+    const prev = slideshow.querySelector(".slideshow__btn.prev");
+    const next = slideshow.querySelector(".slideshow__btn.next");
+    const counter = slideshow.parentElement.querySelector(":scope > .slideshow__meta [data-slide-counter]");
 
-  next.addEventListener("click", () => {
-    nextSlide();
+    if (!slides.length || !prev || !next) {
+      return;
+    }
+
+    const showDots = dotsWrap && !dotsWrap.hidden;
+    let current = Math.max(0, slides.findIndex(slide => slide.classList.contains("is-active")));
+    let timer;
+
+    function getSlideAria(index) {
+      return currentLanguage === "da" ? `Gå til billede ${index}` : `Go to image ${index}`;
+    }
+
+    function updateLightboxImage() {
+      if (!lightbox || lightbox.hidden || activeController !== controller || !lightboxImage) {
+        return;
+      }
+      const image = controller.getCurrentImage();
+      if (image) {
+        lightboxImage.src = image.dataset.fullSrc || image.currentSrc || image.src;
+        lightboxImage.alt = image.alt;
+      }
+    }
+
+    function updateCounter() {
+      if (counter) {
+        counter.textContent = `${current + 1} / ${slides.length}`;
+      }
+    }
+
+    function goTo(index) {
+      slides[current].classList.remove("is-active");
+      if (showDots) {
+        dotsWrap.children[current].classList.remove("is-active");
+      }
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add("is-active");
+      if (showDots) {
+        dotsWrap.children[current].classList.add("is-active");
+      }
+      updateCounter();
+      updateLightboxImage();
+    }
+
+    function nextSlide() {
+      goTo(current + 1);
+    }
+
+    function previousSlide() {
+      goTo(current - 1);
+    }
+
+    function restartAuto() {
+      if (slideshow.dataset.autoplay === "false") {
+        return;
+      }
+      window.clearInterval(timer);
+      timer = window.setInterval(nextSlide, 5000);
+    }
+
+    const controller = {
+      next: nextSlide,
+      previous: previousSlide,
+      getCurrentImage: () => slides[current].querySelector("img"),
+      refreshDotLabels: () => {
+        if (!showDots) {
+          return;
+        }
+        Array.from(dotsWrap.children).forEach((dot, index) => {
+          dot.setAttribute("aria-label", getSlideAria(index + 1));
+        });
+      },
+    };
+
+    if (showDots) {
+      slides.forEach((slide, index) => {
+        const dot = document.createElement("button");
+        dot.className = "dot";
+        dot.type = "button";
+        dot.setAttribute("aria-label", getSlideAria(index + 1));
+        dot.addEventListener("click", () => {
+          goTo(index);
+          restartAuto();
+        });
+        dotsWrap.appendChild(dot);
+      });
+    }
+
+    slides.forEach(slide => {
+      const image = slide.querySelector("img");
+      if (!image || !lightbox) {
+        return;
+      }
+      image.style.cursor = "zoom-in";
+      image.addEventListener("click", () => openLightbox(controller));
+    });
+
+    prev.addEventListener("click", () => {
+      previousSlide();
+      restartAuto();
+    });
+
+    next.addEventListener("click", () => {
+      nextSlide();
+      restartAuto();
+    });
+
+    slides[current].classList.add("is-active");
+    if (showDots) {
+      dotsWrap.children[current].classList.add("is-active");
+    }
+    updateCounter();
+    controller.refreshDotLabels();
     restartAuto();
+    controllers.push(controller);
   });
 
   if (lightboxPrev && lightboxNext && lightboxClose && lightbox) {
-    lightboxPrev.addEventListener("click", previousSlide);
-    lightboxNext.addEventListener("click", nextSlide);
+    lightboxPrev.addEventListener("click", () => activeController?.previous());
+    lightboxNext.addEventListener("click", () => activeController?.next());
     lightboxClose.addEventListener("click", closeLightbox);
     lightbox.addEventListener("click", event => {
       if (event.target === lightbox) {
@@ -155,19 +239,15 @@ function setupSlideshow() {
       if (event.key === "Escape") {
         closeLightbox();
       } else if (event.key === "ArrowRight") {
-        nextSlide();
+        activeController?.next();
       } else if (event.key === "ArrowLeft") {
-        previousSlide();
+        activeController?.previous();
       }
     });
   }
 
-  goTo(0);
-  refreshDotLabels();
-  restartAuto();
-
   return {
-    refreshDotLabels,
+    refreshDotLabels: () => controllers.forEach(controller => controller.refreshDotLabels()),
   };
 }
 
@@ -268,7 +348,8 @@ function setupReveal() {
 
 updateCountdown();
 window.setInterval(updateCountdown, 1000);
-const slideshowApi = setupSlideshow();
+buildWeddingSlideshow();
+const slideshowApi = setupSlideshows();
 setupLanguageToggle(slideshowApi);
 setupSectionSelect();
 setupReveal();

@@ -57,7 +57,8 @@ main {
 #tidsplan,
 #mindebox,
 #lokation,
-#billedgalleri {
+#billedgalleri,
+#bryllupsbilleder {
   scroll-margin-top: 84px;
 }
 
@@ -620,6 +621,47 @@ h2 {
   object-position: center;
 }
 
+.gallery__intro {
+  max-width: 62ch;
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+}
+
+.slideshow__meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+
+.slideshow__counter {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.92rem;
+}
+
+.gallery__link {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.gallery__link:hover {
+  text-decoration: underline;
+}
+
+.gallery__mindebox {
+  max-width: 52ch;
+  text-align: right;
+}
+
+.gallery__note {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 @media (max-width: 760px) {
   .hero picture {
     height: clamp(380px, 84vw, 540px);
@@ -627,6 +669,15 @@ h2 {
 
   .slide img {
     height: clamp(220px, 58vw, 420px);
+  }
+
+  .slideshow__meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .gallery__mindebox {
+    text-align: left;
   }
 
   .timeline__flow {

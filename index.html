@@ -28,6 +28,7 @@
           <option value="#mindebox" data-da="Del billeder" data-en="Share photos">Del billeder</option>
           <option value="#lokation" data-da="Lokation" data-en="Location">Lokation</option>
           <option value="#billedgalleri" data-da="Billedgalleri" data-en="Gallery">Billedgalleri</option>
+          <option value="#bryllupsbilleder" data-da="Bryllupsbilleder" data-en="Wedding photos">Bryllupsbilleder</option>
         </select>
         <a href="#velkommen" data-da="Velkommen" data-en="Welcome">Velkommen</a>
         <a href="#countdown" data-da="Nedtælling" data-en="Countdown">Nedtælling</a>
@@ -37,6 +38,7 @@
         <a href="#mindebox" data-da="Del billeder" data-en="Share photos">Del billeder</a>
         <a href="#lokation" data-da="Lokation" data-en="Location">Lokation</a>
         <a href="#billedgalleri" data-da="Billedgalleri" data-en="Gallery">Billedgalleri</a>
+        <a href="#bryllupsbilleder" data-da="Bryllupsbilleder" data-en="Wedding photos">Bryllupsbilleder</a>
         <button class="lang-toggle" type="button" data-language-toggle aria-label="Skift sprog" data-da-aria-label="Skift sprog" data-en-aria-label="Change language" data-da-label="English" data-en-label="Dansk">English</button>
       </div>
     </nav>
@@ -219,7 +221,7 @@
           <h2 id="gallery-title" data-da="Stemningsbilleder" data-en="Venue photos">Stemningsbilleder</h2>
         </div>
 
-        <div class="slideshow" aria-label="Billedslideshow" data-da-aria-label="Billedslideshow" data-en-aria-label="Photo slideshow">
+        <div class="slideshow" data-slideshow aria-label="Billedslideshow" data-da-aria-label="Billedslideshow" data-en-aria-label="Photo slideshow">
           <button class="slideshow__btn prev" type="button" aria-label="Forrige billede" data-da-aria-label="Forrige billede" data-en-aria-label="Previous image">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path d="M14.5 5.5 8 12l6.5 6.5" />
@@ -278,6 +280,32 @@
         <div class="slideshow__dots" data-dots aria-label="Billednavigation" data-da-aria-label="Billednavigation" data-en-aria-label="Slide navigation"></div>
       </section>
 
+      <section class="gallery gallery--wedding section reveal" id="bryllupsbilleder" aria-labelledby="wedding-gallery-title">
+        <div class="section__head">
+          <p class="eyebrow" data-da="Bryllupsbilleder" data-en="Wedding photos">Bryllupsbilleder</p>
+          <h2 id="wedding-gallery-title" data-da="Minder fra weekenden" data-en="Memories from the weekend">Minder fra weekenden</h2>
+          <p class="gallery__intro" data-da="Se alle billederne, der blev delt i vores MindeBox. Klik på et billede for at se det i fuld størrelse." data-en="See all the photos shared in our MindeBox. Click a photo to view it in full size.">Se alle billederne, der blev delt i vores MindeBox. Klik på et billede for at se det i fuld størrelse.</p>
+        </div>
+
+        <div class="slideshow slideshow--wedding" data-slideshow data-autoplay="false" aria-label="Bryllupsbilleder" data-da-aria-label="Bryllupsbilleder" data-en-aria-label="Wedding photos">
+          <button class="slideshow__btn prev" type="button" aria-label="Forrige billede" data-da-aria-label="Forrige billede" data-en-aria-label="Previous image">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 5.5 8 12l6.5 6.5" /></svg>
+          </button>
+          <div class="slideshow__track" data-track data-wedding-track></div>
+          <button class="slideshow__btn next" type="button" aria-label="Næste billede" data-da-aria-label="Næste billede" data-en-aria-label="Next image">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.5 5.5 16 12l-6.5 6.5" /></svg>
+          </button>
+        </div>
+        <div class="slideshow__meta">
+          <span class="slideshow__counter" data-slide-counter aria-live="polite"></span>
+          <div class="gallery__mindebox">
+            <a class="gallery__link" href="https://app.mindebox.dk/event/GssBwQ2H/upload" target="_blank" rel="noopener noreferrer" data-da="Åbn MindeBox" data-en="Open MindeBox">Åbn MindeBox</a>
+            <p class="gallery__note" data-da="Her kan du uploade og downloade billeder frem til 12. december 2026. Eventet slettes den 12. september 2027." data-en="Here you can upload and download photos until December 12, 2026. The event will be deleted on September 12, 2027.">Her kan du uploade og downloade billeder frem til 12. december 2026. Eventet slettes den 12. september 2027.</p>
+          </div>
+        </div>
+        <div class="slideshow__dots" data-dots hidden></div>
+      </section>
+
       <footer class="footer">
         <p data-da="Mathilde Melgaard Larsen & Rasmus Ishøy Michelsen" data-en="Mathilde Melgaard Larsen & Rasmus Ishøy Michelsen">Mathilde Melgaard Larsen & Rasmus Ishøy Michelsen</p>
         <p class="footer__note" data-da="Vi opdaterer siden med mere information løbende" data-en="We will update the website with more information as we get closer to the wedding">Vi opdaterer siden med mere information løbende</p>
@@ -304,6 +332,7 @@
       </button>
     </div>
 
+    <script src="mindebox-photos.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
