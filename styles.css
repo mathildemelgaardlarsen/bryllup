@@ -971,6 +971,41 @@ h2 {
   }
 }
 
+@media (min-width: 761px) and (max-width: 999px) {
+  .topnav__inner {
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+  }
+
+  .topnav__inner a {
+    display: none;
+  }
+
+  .topnav__select {
+    display: block;
+    flex: 1 1 auto;
+  }
+}
+
+@media (min-width: 1000px) {
+  .topnav__inner {
+    flex-wrap: nowrap;
+    gap: 0.16rem;
+  }
+
+  .topnav__inner a {
+    padding: 0.42rem 0.52rem;
+    font-size: 0.8rem;
+  }
+
+  .lang-toggle {
+    padding: 0.4rem 0.58rem;
+    font-size: 0.86rem;
+  }
+}
+
 @media (min-width: 1024px) {
   .hero__content {
     padding-left: 2rem;
